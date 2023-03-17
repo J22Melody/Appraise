@@ -1970,8 +1970,8 @@ def pairwise_assessment_document(request, code=None, campaign_name=None):
             'current_item': bool(item.id == current_item.id),
             'score1': result.score1 if result else -1,
             'score2': result.score2 if result else -1,
-            'candidate1_text': _candidate1_text,
-            'candidate2_text': _candidate2_text,
+            'candidate1_text': _candidate1_text.replace("&lt;eos&gt;", "<code>&lt;eos&gt;</code>"),
+            'candidate2_text': _candidate2_text.replace("&lt;eos&gt;", "<code>&lt;eos&gt;</code>"),
         }
         block_scores.append(item_scores)
 
