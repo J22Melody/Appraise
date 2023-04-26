@@ -10,8 +10,10 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import re_path
+from django.conf.urls.static import static
 
 from Appraise.settings import BASE_CONTEXT
+from Appraise.settings import STATIC_ROOT
 from Appraise.settings import DEBUG
 from Campaign import views as campaign_views
 from Dashboard import views as dashboard_views
@@ -193,6 +195,8 @@ urlpatterns = [
         name='campaign_status',
     ),
 ]
+
+urlpatterns += static("static", document_root=STATIC_ROOT)
 
 if DEBUG:
     try:

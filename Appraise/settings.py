@@ -191,8 +191,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+FORCE_SCRIPT_NAME = '/service/appraise/'
+
+STATIC_URL = FORCE_SCRIPT_NAME + '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+LOGIN_URL = FORCE_SCRIPT_NAME + 'dashboard/sign-in/'
+LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME + 'dashboard/'
+LOGOUT_REDIRECT_URL = FORCE_SCRIPT_NAME
 
 # TODO: This is a temporary hack for running Appraise locally for regression
 # testing and development as WhiteNoise staticfiles app does not work.
