@@ -200,6 +200,8 @@ LOGIN_URL = FORCE_SCRIPT_NAME + 'dashboard/sign-in/'
 LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME + 'dashboard/'
 LOGOUT_REDIRECT_URL = FORCE_SCRIPT_NAME
 
+CHANGE_PASSWORD_REDIRECT_URL = FORCE_SCRIPT_NAME + 'dashboard/'
+
 # TODO: This is a temporary hack for running Appraise locally for regression
 # testing and development as WhiteNoise staticfiles app does not work.
 if SECRET_KEY != _SECRET_KEY_DEFAULT:

@@ -12,6 +12,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import re_path
 from django.conf.urls.static import static
 
+from Appraise.settings import CHANGE_PASSWORD_REDIRECT_URL
 from Appraise.settings import BASE_CONTEXT
 from Appraise.settings import STATIC_ROOT
 from Appraise.settings import DEBUG
@@ -67,7 +68,7 @@ urlpatterns = [
         r'^dashboard/change-password/$',
         auth_views.PasswordChangeView.as_view(
             template_name='Dashboard/change-password.html',
-            success_url='/dashboard/',
+            success_url=CHANGE_PASSWORD_REDIRECT_URL,
             extra_context=BASE_CONTEXT,
         ),
         name='change-password',
