@@ -516,7 +516,7 @@ function _show_error_box(item_box, msg) {
                     <span title="Static context of the candidate translation">
                         {% if item.targetContextLeft %}
                             {% if target_item_type == 'video' %}
-                            {% with videoid=forloop.counter videos=item.sourceContextLeft %}
+                            {% with videoid=forloop.counter videos=item.targetContextLeft %}
                             {% include 'EvalView/_video_context.html' %}
                             {% endwith %}
                         {% else %}
