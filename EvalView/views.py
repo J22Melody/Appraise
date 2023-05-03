@@ -866,7 +866,7 @@ def direct_assessment_document(request, code=None, campaign_name=None):
         static_context = True
         use_sqm = True
 
-    if "uilanguageDeu" in campaign_opts:
+    if "uilanguagedeu" in campaign_opts:
         ui_language = 'deu'
     elif "uilanguagefra" in campaign_opts:
         ui_language = 'fra'
