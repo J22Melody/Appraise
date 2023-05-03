@@ -604,7 +604,7 @@ if __name__ == "__main__":
     seed(RND_SEED)
 
     print(f'Quality control={CONTROLS}')
-    if not CONTROLS or TGT_LANG == 'sgg':  # no BAD refs if the target size has videos
+    if not CONTROLS or TGT_LANG in ['sgg', 'ise', 'fsl']:  # no BAD refs if the target size has videos
         REQUIRED_SEGS = 100
     else:
         REQUIRED_SEGS = 80

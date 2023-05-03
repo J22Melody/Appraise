@@ -27,6 +27,18 @@
       <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">4: Der grösste Teil der Bedeutung ist erhalten und die Bewegungen sind akzeptabel</td>
       <td class="sqm-label sqm-label-last col-xs-2" style="vertical-align:top;text-align:right;padding-right:0;">6: Perfekte Bedeutung und Natürlichkeit</td>
 
+      {% elif signlt and ui_lang == 'fra' %}
+      <td class="sqm-label sqm-label-first col-xs-2" style="vertical-align:top;text-align:left;padding-left:0;">0: Absence de sens/aucune signification préservée</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">2: Une partie du sens est préservée</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">4: La majeure partie du sens est préservée et le caractère naturel du mouvement est acceptable</td>
+      <td class="sqm-label sqm-label-last col-xs-2" style="vertical-align:top;text-align:right;padding-right:0;">6: Sens parfait et mouvements naturels</td>
+
+      {% elif signlt and ui_lang == 'ita' %}
+      <td class="sqm-label sqm-label-first col-xs-2" style="vertical-align:top;text-align:left;padding-left:0;">0: Privo di senso/significato non conservato</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">2: Parte del significato è conservato</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">4: La maggior parte del significato è conservato e il movimento è accettabile</td>
+      <td class="sqm-label sqm-label-last col-xs-2" style="vertical-align:top;text-align:right;padding-right:0;">6: Significato perfetto e naturalezza</td>
+
       {% elif signlt %}
       <td class="sqm-label sqm-label-first col-xs-2" style="vertical-align:top;text-align:left;padding-left:0;">0: No meaning preserved</td>
       <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">2: Some meaning preserved</td>
@@ -44,6 +56,18 @@
       <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">2: Ein Teil der Bedeutung ist erhalten</td>
       <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">4: Der grösste Teil der Bedeutung ist erhalten und es gibt nur wenige Grammatikfehler</td>
       <td class="sqm-label sqm-label-last col-xs-2" style="vertical-align:top;text-align:right;padding-right:0;">6: Perfekte Bedeutung und Grammatik</td>
+
+      {% elif ui_lang == 'fra' %}
+      <td class="sqm-label sqm-label-first col-xs-2" style="vertical-align:top;text-align:left;padding-left:0;">0: Absence de sens/aucune signification préservée</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">2: Une partie du sens est préservée</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">4: La majeure partie du sens est préservée et il y a peu de fautes de grammaire</td>
+      <td class="sqm-label sqm-label-last col-xs-2" style="vertical-align:top;text-align:right;padding-right:0;">6: Sens et grammaire parfaits</td>
+
+      {% elif ui_lang == 'ita' %}
+      <td class="sqm-label sqm-label-first col-xs-2" style="vertical-align:top;text-align:left;padding-left:0;">0: Privo di senso/significato non conservato</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">2: Parte del significato è conservato</td>
+      <td class="sqm-label col-xs-4" style="vertical-align:top;text-align:center;">4: La maggior parte del significato è conservato e ci sono pochi errori grammaticali</td>
+      <td class="sqm-label sqm-label-last col-xs-2" style="vertical-align:top;text-align:right;padding-right:0;">6: Significato e grammatica perfetti</td>
 
       {% else %}
       <td class="sqm-label sqm-label-first col-xs-2" style="vertical-align:top;text-align:left;padding-left:0;">0: Nonsense/ No meaning preserved</td>

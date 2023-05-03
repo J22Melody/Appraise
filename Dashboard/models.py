@@ -209,12 +209,14 @@ LANGUAGE_CODES_AND_NAMES = {
     'lin': 'Lingala (Lingála)',
     'lug': 'Luganda (Oluganda)',
     'sgg': 'Swiss-German Sign Language (Deutschschweizer Gebärdensprache (DSGS))',
+    'ise': 'Italian Sign Language (LIS)',
+    'fsl': 'French Sign Language (LSF)',
     'liv': 'Livonian (līvõ kēļ)',
     'sah': 'Yakut (саха тыла)',
 }
 
 # All sign language codes
-SIGN_LANGUAGE_CODES = set([LANGUAGE_CODES_AND_NAMES['sgg']])
+SIGN_LANGUAGE_CODES = set([LANGUAGE_CODES_AND_NAMES['sgg'], LANGUAGE_CODES_AND_NAMES['ise'], LANGUAGE_CODES_AND_NAMES['fsl']])
 
 # Ensure that all languages have a corresponding group.
 try:

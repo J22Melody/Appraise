@@ -30,6 +30,7 @@ from EvalData.models import PairwiseAssessmentDocumentTask
 from EvalData.models import PairwiseAssessmentResult
 from EvalData.models import PairwiseAssessmentTask
 from EvalData.models import TaskAgenda
+from EvalView.instructions import get_sign_language_instructions
 
 # pylint: disable=import-error
 
@@ -858,13 +859,21 @@ def direct_assessment_document(request, code=None, campaign_name=None):
     speech_translation = 'speechtranslation' in campaign_opts
     static_context = 'staticcontext' in campaign_opts
     use_sqm = 'sqm' in campaign_opts
-    ui_language = 'enu'
+    ui_language = 'eng'
 
     if 'wmt22signlt' in campaign_opts:
         sign_translation = True
         static_context = True
         use_sqm = True
+
+    if "uilanguageDeu" in campaign_opts:
         ui_language = 'deu'
+    elif "uilanguagefra" in campaign_opts:
+        ui_language = 'fra'
+    elif "uilanguageita" in campaign_opts:
+        ui_language = 'ita'
+
+    text_to_sign = False
 
     if sign_translation:
         # For sign languages, source or target segments are videos
@@ -874,7 +883,10 @@ def direct_assessment_document(request, code=None, campaign_name=None):
         if target_language in SIGN_LANGUAGE_CODES:
             target_item_type = 'video'
             candidate_label = 'Candidate translation (video)'
+            text_to_sign = True
         else:
+            LOGGER.warning("Sign translation option selected, but neither source nor "
+                           "target language are a sign language.")
             sign_translation = False  # disable sign-specific SQM instructions
 
     priming_question_texts = [
@@ -921,35 +933,13 @@ def direct_assessment_document(request, code=None, campaign_name=None):
         ]
         candidate_label = None
 
-    # German instructions for WMT22 sign language task
+    # German, Italian, French or English instructions for sign language tasks
     if 'wmt22signlt' in campaign_opts:
-        if 'text2sign' in campaign_opts:
-            priming_question_texts = [
-                'Unten sehen Sie ein Dokument mit {0} Sätzen auf Deutsch (linke Spalten) '
-                'und die entsprechenden möglichen Übersetzungen in Deutschschweizer '
-                'Gebärdensprache (DSGS) (rechte Spalten). Bewerten Sie jede mögliche '
-                'Übersetzung des Satzes im Kontext des Dokuments. '
-                'Sie können bereits bewertete Sätze jederzeit durch Anklicken eines '
-                'Quelltextes erneut aufrufen und die Bewertung aktualisieren.'.format(
-                    len(block_items) - 1,
-                ),
-            ]
-        else:
-            priming_question_texts = [
-                'Unten sehen Sie ein Dokument mit {0} Sätzen in Deutschschweizer '
-                'Gebärdensprache (DSGS) (linke Spalten) und die entsprechenden möglichen '
-                'Übersetzungen auf Deutsch (rechte Spalten). Bewerten Sie jede mögliche '
-                'Übersetzung des Satzes im Kontext des Dokuments. '
-                'Sie können bereits bewertete Sätze jederzeit durch Anklicken eines '
-                'Eingabevideos erneut aufrufen und die Bewertung aktualisieren.'.format(
-                    len(block_items) - 1,
-                ),
-            ]
-        document_question_texts = [
-            'Bitte bewerten Sie die Übersetzungsqualität des gesamten Dokuments. '
-            '(Sie können das Dokument erst bewerten, nachdem Sie zuvor alle Sätze '
-            'einzeln bewertet haben.)',
-        ]
+        priming_question_texts, document_question_texts = get_sign_language_instructions(ui_language,
+                                                                                         text_to_sign,
+                                                                                         block_items,
+                                                                                         source_language,
+                                                                                         target_language)
 
     # Special instructions for IWSLT 2022 dialect task
     if 'iwslt2022dialectsrc' in campaign_opts:

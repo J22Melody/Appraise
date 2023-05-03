@@ -2,6 +2,10 @@
   <div class="col-md-12">
     {% if ui_lang == 'deu' %}
     <p>Bewerten Sie die Übersetzungsqualität auf einer kontinuierlichen Skala mit Hilfe der nachfolgend beschriebenen Qualitätsstufen:</p>
+    {% elif ui_lang == 'fra' %}
+    <p>Évaluez la qualité de la traduction sur une échelle continue en utilisant les niveaux de qualité décrits ci-dessous:</p>
+    {% elif ui_lang == 'ita' %}
+    <p>Valutate la qualità della traduzione su una scala continua utilizzando i livelli di qualità descritti di seguito:</p>
     {% else %}
     <p>Assess the translation quality on a continuous scale using the quality levels described as follows:</p>
     {% endif %}
@@ -18,6 +22,19 @@
       <li><strong>2: Ein Teil der Bedeutung ist erhalten</strong>: Die Übersetzung behält einen Teil der Bedeutung der Quelle bei, lässt aber wichtige Teile aus. Die Erzählung ist aufgrund von grundlegenden Fehlern schwer zu verstehen. Bewegungen können mangelhaft sein.</li>
       <li><strong>4: Der grösste Teil der Bedeutung ist erhalten und die Bewegungen sind akzeptabel</strong>: Die Übersetzung behält den grössten Teil der Bedeutung der Quelle bei. Sie kann kleine Fehler oder kleinere kontextuelle Unstimmigkeiten aufweisen. Bewegungen sehen teilweise nicht natürlich aus.</li>
       <li><strong>6: Perfekte Bedeutung und Natürlichkeit</strong>: Die Bedeutung der Übersetzung stimmt vollständig mit der Quelle und dem umgebenden Kontext (falls zutreffend) überein. Bewegungen wirken natürlich.</li>
+
+      {% elif signlt and ui_lang == 'fra' %}
+      <li><strong>0: Absence de sens/aucune signification préservée</strong>: Presque toutes les informations sont perdues entre la traduction et la source. Le caractère naturel du mouvement n'est pas pertinent.</li>
+      <li><strong>2: Une partie du sens est préservée</strong>: La traduction préserve une partie du sens de la source mais omet des parties importantes. Le récit est difficile à suivre en raison d'erreurs fondamentales. Le mouvement n'est pas toujours naturel.</li>
+      <li><strong>4: La majeure partie du sens est préservée et le caractère naturel du mouvement est acceptable</strong>: La traduction conserve la majeure partie du sens de la source. Elle peut comporter quelques erreurs mineures ou des incohérences contextuelles. Le mouvement peut sembler peu naturel.</li>
+      <li><strong>6: Sens parfait et mouvements naturels</strong>: Le sens de la traduction est totalement cohérent avec la source et le contexte environnant (le cas échéant). Les mouvements sont naturels.</li>
+
+      {% elif signlt and ui_lang == 'ita' %}
+      <li><strong>0: Privo di senso/significato non conservato</strong>: Quasi tutte le informazioni tra la traduzione e il testo sorgente sono andate perse. La naturalezza del movimento è inconsistente.</li>
+      <li><strong>2: Parte del significato è conservato</strong>: La traduzione conserva parte del significato del testo sorgente, ma omette parti importanti. La narrazione è difficile da capire a causa di errori fondamentali. La naturalezza del movimento può essere insufficiente.</li>
+      <li><strong>4: La maggior parte del significato è conservato e il movimento è accettabile</strong>: La traduzione conserva la maggior parte del significato del testo sorgente. Può contenere errori o discrepanze contestuali di entità minore. Il movimento può sembrare innaturale.</li>
+      <li><strong>6: Significato perfetto e naturalezza</strong>: Il significato della traduzione è completamente coerente con il testo sorgente e con il contesto dato (se applicabile). Il movimento sembra naturale.</li>
+
       {% elif signlt %}
       <li><strong>0: Nonsense/No meaning preserved</strong>: Nearly all information is lost between the translation and source. Naturalness of motion is irrelevant.</li>
       <li><strong>2: Some meaning preserved</strong>: The translation preserves some of the meaning of the source but misses significant parts. The narrative is hard to follow due to fundamental errors. Naturalness of motion may be poor.</li>
@@ -35,6 +52,19 @@
       <li><strong>2: Ein Teil der Bedeutung ist erhalten</strong>: Die Übersetzung behält einen Teil der Bedeutung der Quelle bei, lässt aber wichtige Teile aus. Die Erzählung ist aufgrund von grundlegenden Fehlern schwer zu verstehen. Die Grammatik kann mangelhaft sein.</li>
       <li><strong>4: Der grösste Teil der Bedeutung ist erhalten und es gibt nur wenige Grammatikfehler</strong>: Die Übersetzung behält den grössten Teil der Bedeutung der Quelle bei. Sie kann einige Grammatikfehler oder kleinere kontextuelle Unstimmigkeiten aufweisen.</li>
       <li><strong>6: Perfekte Bedeutung und Grammatik</strong>: Die Bedeutung der Übersetzung stimmt vollständig mit der Quelle und dem umgebenden Kontext (falls zutreffend) überein. Auch die Grammatik ist korrekt.</li>
+
+      {% elif ui_lang == 'fra' %}
+      <li><strong>0: Absence de sens/aucune signification préservée</strong>: Presque toutes les informations sont perdues entre la traduction et la source. La grammaire n'est pas pertinente.</li>
+      <li><strong>2: Une partie du sens est préservée</strong>: La traduction préserve une partie du sens de la source mais omet des parties importantes. Le récit est difficile à suivre en raison d'erreurs fondamentales. La grammaire peut être médiocre.</li>
+      <li><strong>4: La majeure partie du sens est préservée et il y a peu de fautes de grammaire</strong>: La traduction conserve la majeure partie du sens de la source. Elle peut comporter quelques fautes de grammaire ou des incohérences contextuelles mineures.</li>
+      <li><strong>6: Sens et grammaire parfaits</strong>: le sens de la traduction est totalement cohérent avec la source et le contexte environnant (le cas échéant). La grammaire est également correcte.</li>
+
+      {% elif ui_lang == 'ita' %}
+      <li><strong>0: Privo di senso/significato non conservato</strong>: La traduzione e il video sorgente sono andate perse quasi tutte le informazioni. La grammatica è irrilevante.</li>
+      <li><strong>2: Parte del significato è conservato</strong>: La traduzione conserva parte del significato del video sorgente, ma omette parti importanti. La narrazione è difficile da capire a causa di errori sostanziali. La grammatica può essere insufficiente.</li>
+      <li><strong>4: La maggior parte del significato è conservato e ci sono pochi errori grammaticali</strong>: La traduzione conserva la maggior parte del significato del video sorgente. Potrebbe avere alcuni errori grammaticali o incongruenze contestuali di entità minore.</li>
+      <li><strong>6: Significato e grammatica perfetti</strong>: Il significato della traduzione è completamente coerente con il video sorgente e con il contesto dato (se applicabile). Anche la grammatica è corretta.</li>
+
       {% else %}
       <li><strong>0: Nonsense/No meaning preserved</strong>: Nearly all information is lost between the translation and source. Grammar is irrelevant.</li>
       <li><strong>2: Some meaning preserved</strong>: The translation preserves some of the meaning of the source but misses significant parts. The narrative is hard to follow due to fundamental errors. Grammar may be poor.</li>

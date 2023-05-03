@@ -28,6 +28,8 @@ LANGUAGE_CODES = {
     'aeb': 'ae',
     'spa': 'es',
     'sgg': 'dsgs',
+    'ise': 'lis',
+    'fsl': 'lsf',
     'hrv': 'hr',
     'ukr': 'uk',
     'sah': 'sah',
