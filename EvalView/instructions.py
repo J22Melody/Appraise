@@ -2,7 +2,7 @@
 
 
 SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<center>
-    <button onclick="show_video_instructions()" id="btn-show-video-instructions" texthide="{text_hide}" textshow="{text_show}" style="margin-bottom:1em">{text_show}</button>
+    <button onclick="show_video_instructions()" class="btn btn-default button-margin" id="btn-show-video-instructions" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
 
     <iframe width="560" id="iframe-video-instructions" height="315" src="{url}"
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
@@ -19,7 +19,8 @@ sl_video_instructions_urls = {
             "fsl": None
         },
         "document": {
-            "sgg": None,
+            # TODO: change to correct one!
+            "sgg": "https://www.youtube.com/embed/lQaQmAo8RrA",
             "ise": None,
             "fsl": None
         }
@@ -109,6 +110,14 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
             '(Sie können das Dokument erst bewerten, nachdem Sie zuvor alle Sätze '
             'einzeln bewertet haben.)',
         ]
+
+        if add_video_instructions:
+            video_string = get_video_instructions(direction="text_to_sign",
+                                                  level="document",
+                                                  sign_language=target_language_code,
+                                                  ui_language=ui_language)
+
+            document_question_texts = [video_string] + document_question_texts
 
     elif ui_language == "fra":
         if text_to_sign:
