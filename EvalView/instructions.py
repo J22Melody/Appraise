@@ -1,11 +1,13 @@
 #! /bin/python
 
 
-SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<button onclick="show_video_instructions()" id="btn-show-video-instructions">Show video instructions</button>
+SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<center>
+    <button onclick="show_video_instructions()" id="btn-show-video-instructions" texthide="{text_hide}" textshow="{text_hide}">{text_show}</button>
 
-<iframe width="560" id="iframe-video-instructions" height="315" src="{url}"
-    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-    gyroscope; picture-in-picture; web-share" allowfullscreen style="display:none"></iframe>
+    <iframe width="560" id="iframe-video-instructions" height="315" src="{url}"
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+        gyroscope; picture-in-picture; web-share" allowfullscreen style="display:none"></iframe>
+</center>
 """
 
 
@@ -36,12 +38,34 @@ sl_video_instructions_urls = {
     }
 }
 
+button_texts = {
+    "eng": {
+        "hide": "Hide sign language instructions",
+        "show": "Show sign language instructions"
+    },
+    "deu": {
+        "hide": "Anleitung in Gebärdensprache ausblenden",
+        "show": "Anleitung in Gebärdensprache anzeigen"
+    },
+    "fra": {
+        "hide": "Hide sign language instructions",
+        "show": "Show sign language instructions"
+    },
+    "ita": {
+        "hide": "Hide sign language instructions",
+        "show": "Show sign language instructions"
+    },
+}
 
-def get_video_instructions(direction: str, level: str, sign_language: str) -> str:
+
+def get_video_instructions(direction: str, level: str, sign_language: str, ui_language: str) -> str:
 
     url = sl_video_instructions_urls[direction][level][sign_language]
 
-    return SL_VIDEO_INSTRUCTIONS_TEMPLATE.format(url=url)
+    text_hide = button_texts[ui_language]["hide"]
+    text_show = button_texts[ui_language]["show"]
+
+    return SL_VIDEO_INSTRUCTIONS_TEMPLATE.format(url=url, text_hide=text_hide, text_show=text_show)
 
 
 def get_sign_language_instructions(ui_language, text_to_sign, block_items, source_language, target_language,
@@ -63,7 +87,8 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
             if add_video_instructions:
                 video_string = get_video_instructions(direction="text_to_sign",
                                                       level="segment",
-                                                      sign_language=target_language_code)
+                                                      sign_language=target_language_code,
+                                                      ui_language=ui_language)
 
                 priming_question_texts.append(video_string)
 
