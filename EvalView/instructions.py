@@ -1,9 +1,9 @@
 #! /bin/python
 
 
-SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<iframe width="560" height="315" src="{url}" 
+SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<center><iframe width="560" height="315" src="{url} class="toggleable"" 
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>"""
+gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>"""
 
 
 sl_video_instructions_urls = {
