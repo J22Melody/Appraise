@@ -862,6 +862,8 @@ def direct_assessment_document(request, code=None, campaign_name=None):
     use_sqm = 'sqm' in campaign_opts
     ui_language = 'eng'
 
+    add_video_instructions = "slvideoinstructions" in campaign_opts
+
     if 'wmt22signlt' in campaign_opts:
         sign_translation = True
         static_context = True
@@ -934,13 +936,19 @@ def direct_assessment_document(request, code=None, campaign_name=None):
         ]
         candidate_label = None
 
+    source_language_code = current_task.marketSourceLanguageCode()
+    target_language_code = current_task.marketTargetLanguageCode()
+
     # German, Italian, French or English instructions for sign language tasks
     if 'wmt22signlt' in campaign_opts:
         priming_question_texts, document_question_texts = get_sign_language_instructions(ui_language,
                                                                                          text_to_sign,
                                                                                          block_items,
                                                                                          source_language,
-                                                                                         target_language)
+                                                                                         target_language,
+                                                                                         source_language_code,
+                                                                                         target_language_code,
+                                                                                         add_video_instructions)
 
     # Special instructions for IWSLT 2022 dialect task
     if 'iwslt2022dialectsrc' in campaign_opts:

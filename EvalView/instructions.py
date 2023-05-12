@@ -1,6 +1,48 @@
 #! /bin/python
 
-def get_sign_language_instructions(ui_language, text_to_sign, block_items, source_language, target_language):
+
+SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<iframe width="560" height="315" src="{url}" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>"""
+
+
+sl_video_instructions_urls = {
+    "text_to_sign": {
+        "segment": {
+            "sgg": "https://www.youtube.com/embed/lQaQmAo8RrA",
+            "ise": None,
+            "fsl": None
+        },
+        "document": {
+            "sgg": None,
+            "ise": None,
+            "fsl": None
+        }
+    },
+    "sign_to_text": {
+        "segment": {
+            "sgg": None,
+            "ise": None,
+            "fsl": None
+        },
+        "document": {
+            "sgg": None,
+            "ise": None,
+            "fsl": None
+        }
+    }
+}
+
+
+def get_video_instructions(direction: str, level: str, sign_language: str) -> str:
+
+    url = sl_video_instructions_urls[direction][level][sign_language]
+
+    return SL_VIDEO_INSTRUCTIONS_TEMPLATE.format(url=url)
+
+
+def get_sign_language_instructions(ui_language, text_to_sign, block_items, source_language, target_language,
+                                   source_language_code, target_language_code, add_video_instructions: bool):
 
     if ui_language == "deu":
         if text_to_sign:
@@ -14,6 +56,14 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
                     len(block_items) - 1,
                 ),
             ]
+
+            if add_video_instructions:
+                video_string = get_video_instructions(direction="text_to_sign",
+                                                      level="segment",
+                                                      sign_language=target_language_code)
+
+                priming_question_texts.append(video_string)
+
         else:
             priming_question_texts = [
                 'Unten sehen Sie ein Dokument mit {0} Sätzen in Deutschschweizer '
