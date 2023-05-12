@@ -30,7 +30,7 @@ sl_video_instructions_urls = {
         },
         "document": {
             # TODO: change to correct one!
-            "sgg": "https://www.youtube.com/embed/lQaQmAo8RrA",
+            "sgg": "https://www.youtube.com/embed/zWQ5eyu7Z4o",
             "ise": None,
             "fsl": None
         }
