@@ -1,10 +1,20 @@
 #! /bin/python
 
 
-SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<center>
-    <button onclick="show_video_instructions()" class="btn btn-default button-margin" id="btn-show-video-instructions" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
+SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT = """<center>
+    <button onclick="show_video_instructions_segment()" class="btn btn-default button-margin" id="btn-show-video-instructions-segment" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
 
-    <iframe width="560" id="iframe-video-instructions" height="315" src="{url}"
+    <iframe width="560" id="iframe-video-instructions-segment" height="315" src="{url}"
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+        gyroscope; picture-in-picture; web-share" allowfullscreen style="display:none"></iframe>
+</center>
+"""
+
+
+SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT = """<center>
+    <button onclick="show_video_instructions_document()" class="btn btn-default button-margin" id="btn-show-video-instructions-document" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
+
+    <iframe width="560" id="iframe-video-instructions-document" height="315" src="{url}"
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
         gyroscope; picture-in-picture; web-share" allowfullscreen style="display:none"></iframe>
 </center>
@@ -66,7 +76,12 @@ def get_video_instructions(direction: str, level: str, sign_language: str, ui_la
     text_hide = button_texts[ui_language]["hide"]
     text_show = button_texts[ui_language]["show"]
 
-    return SL_VIDEO_INSTRUCTIONS_TEMPLATE.format(url=url, text_hide=text_hide, text_show=text_show)
+    if level == "segment":
+        template = SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT
+    else:
+        template = SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT
+
+    return template.format(url=url, text_hide=text_hide, text_show=text_show)
 
 
 def get_sign_language_instructions(ui_language, text_to_sign, block_items, source_language, target_language,

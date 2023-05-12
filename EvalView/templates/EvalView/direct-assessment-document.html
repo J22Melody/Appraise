@@ -184,10 +184,23 @@ function _hide_target_box() {
     }
 }
 
-function show_video_instructions() {
+function show_video_instructions_segment() {
     // toggle showing video instructions
-    var video_iframe = document.getElementById("iframe-video-instructions");
-    var btn_show_video_instructions = document.getElementById("btn-show-video-instructions");
+    var video_iframe = document.getElementById("iframe-video-instructions-segment");
+    var btn_show_video_instructions = document.getElementById("btn-show-video-instructions-segment");
+    if (video_iframe.style.display === "none") {
+        video_iframe.style.display = "block";
+        btn_show_video_instructions.innerText = btn_show_video_instructions.getAttribute("texthide");
+    } else {
+        video_iframe.style.display = "none";
+        btn_show_video_instructions.innerText = btn_show_video_instructions.getAttribute("textshow");
+    }
+}
+
+function show_video_instructions_document() {
+    // toggle showing video instructions
+    var video_iframe = document.getElementById("iframe-video-instructions-document");
+    var btn_show_video_instructions = document.getElementById("btn-show-video-instructions-document");
     if (video_iframe.style.display === "none") {
         video_iframe.style.display = "block";
         btn_show_video_instructions.innerText = btn_show_video_instructions.getAttribute("texthide");
