@@ -2,7 +2,7 @@
 
 
 SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<center>
-    <button onclick="show_video_instructions()" id="btn-show-video-instructions" texthide="{text_hide}" textshow="{text_hide}">{text_show}</button>
+    <button onclick="show_video_instructions()" id="btn-show-video-instructions" texthide="{text_hide}" textshow="{text_show}" style="margin-bottom:1em">{text_show}</button>
 
     <iframe width="560" id="iframe-video-instructions" height="315" src="{url}"
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
@@ -90,7 +90,7 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
                                                       sign_language=target_language_code,
                                                       ui_language=ui_language)
 
-                priming_question_texts.append(video_string)
+                priming_question_texts = [video_string] + priming_question_texts
 
         else:
             priming_question_texts = [
