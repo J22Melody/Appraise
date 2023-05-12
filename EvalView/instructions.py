@@ -12,7 +12,7 @@ SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT = """<center>
 
 
 SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT = """<center>
-    <button onclick="show_video_instructions_document()" class="btn btn-default button-margin" id="btn-show-video-instructions-document" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
+    <button type="button" onclick="show_video_instructions_document()" class="btn btn-default button-margin" id="btn-show-video-instructions-document" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
 
     <iframe width="560" id="iframe-video-instructions-document" height="315" src="{url}"
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
