@@ -1,11 +1,21 @@
 #! /bin/python
 
 
-SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<center>
-<iframe width="560" height="315" src="{url}" class="toggleable"
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<p class="toggleable-reverse"><i>&lt;Video is hidden. Click to expand.&gt;</i></p>
+SL_VIDEO_INSTRUCTIONS_TEMPLATE = """<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('#btn-show-video-instructions').click(function(){ 
+        if(!$('#iframe-video-instructions').length) {
+                $('#div-video-instructions').html('<iframe width="560" id="iframe-video-instructions" height="315" src="{url}"
+                                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                                            gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+        }
+    });   
+});
+</script>
+<center>
+<button id="btn-show-video-instructions">Video instructions are hidden. Click to show.</button>
+<div id="div-video-instructions"></div>
 </center>
 """
 
