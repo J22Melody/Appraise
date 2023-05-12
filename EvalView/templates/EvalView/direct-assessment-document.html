@@ -183,6 +183,19 @@ function _hide_target_box() {
     }
 }
 
+function show_video_instructions() {
+    // toggle showing video instructions
+    var video_iframe = document.getElementById("iframe-video-instructions");
+    var btn_show_video_instructions = document.getElementById("btn-show-video-instructions");
+    if (video_iframe.style.display === "none") {
+        video_iframe.style.display = "block";
+        btn_show_video_instructions.innerText = "Hide video instructions";
+    } else {
+        video_iframe.style.display = "none";
+        btn_show_video_instructions.innerText = "Show video instructions";
+    }
+}
+
 function update_score() {
     // Assign new score to the corresponding input
     var new_score = $(this).slider('value');
