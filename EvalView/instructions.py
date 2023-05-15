@@ -25,26 +25,25 @@ sl_video_instructions_urls = {
     "text_to_sign": {
         "segment": {
             "sgg": "https://www.youtube.com/embed/lQaQmAo8RrA",
-            "ise": None,
-            "fsl": None
+            "ise": "https://www.youtube.com/embed/ZTGDPyc-yr0",
+            "fsl": "https://www.youtube.com/embed/2a3XvKwQaJI"
         },
         "document": {
-            # TODO: change to correct one!
-            "sgg": "https://www.youtube.com/embed/zWQ5eyu7Z4o",
-            "ise": None,
-            "fsl": None
+            "sgg": "https://www.youtube.com/embed/opsbXBLvv7I",
+            "ise": "https://www.youtube.com/embed/uxRzGovPZsM",
+            "fsl": "https://www.youtube.com/embed/4vcnpxBFYa4"
         }
     },
     "sign_to_text": {
         "segment": {
-            "sgg": None,
-            "ise": None,
-            "fsl": None
+            "sgg": "https://www.youtube.com/embed/zWQ5eyu7Z4o",
+            "ise": "https://www.youtube.com/embed/ZlcecwjewIs",
+            "fsl": "https://www.youtube.com/embed/C2q12OfKPX0"
         },
         "document": {
-            "sgg": None,
-            "ise": None,
-            "fsl": None
+            "sgg": "https://www.youtube.com/embed/o4tVcE929mk",
+            "ise": "https://www.youtube.com/embed/M-iJSpjtPuY",
+            "fsl": "https://www.youtube.com/embed/sWyPg9lxrdQ"
         }
     }
 }
@@ -59,12 +58,12 @@ button_texts = {
         "show": "Anleitung in Gebärdensprache anzeigen"
     },
     "fra": {
-        "hide": "Hide sign language instructions",
-        "show": "Show sign language instructions"
+        "hide": "Masquer les instructions en langue des signes",
+        "show": "Afficher les instructions en langue des signes"
     },
     "ita": {
-        "hide": "Hide sign language instructions",
-        "show": "Show sign language instructions"
+        "hide": "Nnascondere le istruzioni in lingua dei segni ",
+        "show": "Mostrare le istruzioni in lingua dei segni "
     },
 }
 
@@ -100,14 +99,6 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
                 ),
             ]
 
-            if add_video_instructions:
-                video_string = get_video_instructions(direction="text_to_sign",
-                                                      level="segment",
-                                                      sign_language=target_language_code,
-                                                      ui_language=ui_language)
-
-                priming_question_texts = [video_string] + priming_question_texts
-
         else:
             priming_question_texts = [
                 'Unten sehen Sie ein Dokument mit {0} Sätzen in Deutschschweizer '
@@ -125,14 +116,6 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
             '(Sie können das Dokument erst bewerten, nachdem Sie zuvor alle Sätze '
             'einzeln bewertet haben.)',
         ]
-
-        if add_video_instructions:
-            video_string = get_video_instructions(direction="text_to_sign",
-                                                  level="document",
-                                                  sign_language=target_language_code,
-                                                  ui_language=ui_language)
-
-            document_question_texts = [video_string] + document_question_texts
 
     elif ui_language == "fra":
         if text_to_sign:
@@ -224,5 +207,32 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
             'Please score the overall document translation quality (you can score the whole document only '
             'after scoring all individual sentences first).',
         ]
+
+    if add_video_instructions:
+
+        if text_to_sign:
+            direction = "text_to_sign"
+            sign_language = target_language_code
+        else:
+            direction = "sign_to_text"
+            sign_language = source_language_code
+
+        # on segment level
+
+        video_string_segment = get_video_instructions(direction=direction,
+                                                      level="segment",
+                                                      sign_language=sign_language,
+                                                      ui_language=ui_language)
+
+        priming_question_texts = [video_string_segment] + priming_question_texts
+
+        # on document level
+
+        video_string_document = get_video_instructions(direction=direction,
+                                                       level="document",
+                                                       sign_language=sign_language,
+                                                       ui_language=ui_language)
+
+        document_question_texts = [video_string_document] + document_question_texts
 
     return priming_question_texts, document_question_texts
