@@ -24,26 +24,26 @@ SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT = """<center>
 sl_video_instructions_urls = {
     "text_to_sign": {
         "segment": {
-            "sgg": "https://www.youtube.com/embed/lQaQmAo8RrA",
-            "ise": "https://www.youtube.com/embed/ZTGDPyc-yr0",
-            "fsl": "https://www.youtube.com/embed/2a3XvKwQaJI"
+            "sgg": "https://www.youtube.com/embed/b1-N6op9Ozk",
+            "ise": "https://www.youtube.com/embed/9ujx9aUNMeM",
+            "fsl": "https://www.youtube.com/embed/koSiyyXn2Qs"
         },
         "document": {
-            "sgg": "https://www.youtube.com/embed/opsbXBLvv7I",
-            "ise": "https://www.youtube.com/embed/uxRzGovPZsM",
-            "fsl": "https://www.youtube.com/embed/4vcnpxBFYa4"
+            "sgg": "https://www.youtube.com/embed/rWfITo0TuOE",
+            "ise": "https://www.youtube.com/embed/ULwsjzEUUVI",
+            "fsl": "https://www.youtube.com/embed/03bW-qQqcNg"
         }
     },
     "sign_to_text": {
         "segment": {
-            "sgg": "https://www.youtube.com/embed/zWQ5eyu7Z4o",
-            "ise": "https://www.youtube.com/embed/ZlcecwjewIs",
-            "fsl": "https://www.youtube.com/embed/C2q12OfKPX0"
+            "sgg": "https://www.youtube.com/embed/_kPvKZKZDPw",
+            "ise": "https://www.youtube.com/embed/w9YdbhzH10c",
+            "fsl": "https://www.youtube.com/embed/Yl9i2KGUtvI"
         },
         "document": {
-            "sgg": "https://www.youtube.com/embed/o4tVcE929mk",
-            "ise": "https://www.youtube.com/embed/M-iJSpjtPuY",
-            "fsl": "https://www.youtube.com/embed/sWyPg9lxrdQ"
+            "sgg": "https://www.youtube.com/embed/x2FEUfg-h6U",
+            "ise": "https://www.youtube.com/embed/F8GpkALmu4Q",
+            "fsl": "https://www.youtube.com/embed/WNcdMahoyeo"
         }
     }
 }
@@ -62,7 +62,7 @@ button_texts = {
         "show": "Afficher les instructions en langue des signes"
     },
     "ita": {
-        "hide": "Nnascondere le istruzioni in lingua dei segni ",
+        "hide": "Nascondere le istruzioni in lingua dei segni ",
         "show": "Mostrare le istruzioni in lingua dei segni "
     },
 }
