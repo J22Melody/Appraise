@@ -62,8 +62,8 @@ button_texts = {
         "show": "Afficher les instructions en langue des signes"
     },
     "ita": {
-        "hide": "Nascondere le istruzioni in lingua dei segni ",
-        "show": "Mostrare le istruzioni in lingua dei segni "
+        "hide": "Nascondi le istruzioni in lingua dei segni",
+        "show": "Mostra le istruzioni in lingua dei segni"
     },
 }
 

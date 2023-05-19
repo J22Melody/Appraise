@@ -528,14 +528,23 @@ function _show_error_box(item_box, msg) {
                 <div class="col-sm-6">
                     <span title="Source static context">
                         {% if item.sourceContextLeft %}
-                        {% if source_item_type == 'video' %}
-                            {% with videoid=forloop.counter videos=item.sourceContextLeft %}
-                            {% include 'EvalView/_video_context.html' %}
-                            {% endwith %}
-                        {% else %}
-                        {{ item.sourceContextLeft|linebreaks }}
-                        {% endif %}
-                        <small class="segment-label">- Additional source context</small>
+                            {% if source_item_type == 'video' %}
+                                {% with videoid=forloop.counter videos=item.sourceContextLeft %}
+                                {% include 'EvalView/_video_context.html' %}
+                                {% endwith %}
+                            {% else %}
+                            {{ item.sourceContextLeft|linebreaks }}
+                            {% endif %}
+
+                            {% if ui_lang == 'deu' %}
+                                <small class="segment-label">- Zusätzlicher Kontext der Quellseite</small>
+                            {% elif ui_lang == 'ita' %}
+                                <small class="segment-label">- Contesto di origine aggiuntivo</small>
+                            {% elif ui_lang == 'fra' %}
+                                <small class="segment-label">- Contexte d’origine</small>
+                            {% else %}
+                                <small class="segment-label">- Additional source context</small>
+                            {% endif %}
                         {% endif %}
                     </span>
                 </div>
@@ -549,7 +558,17 @@ function _show_error_box(item_box, msg) {
                         {% else %}
                         <strong>{{ item.targetContextLeft|linebreaks }}</strong>
                         {% endif %}
-                        <small class="segment-label">- Additional target context</small>
+
+                        {% if ui_lang == 'deu' %}
+                            <small class="segment-label">- Zusätzlicher Kontext der Übersetzung</small>
+                        {% elif ui_lang == 'ita' %}
+                            <small class="segment-label">- Contesto aggiuntivo della traduzione</small>
+                        {% elif ui_lang == 'fra' %}
+                            <small class="segment-label">- Contexte de la traduction</small>
+                        {% else %}
+                            <small class="segment-label">- Additional target context</small>
+                        {% endif %}
+
                         {% endif %}
                     </span>
                 </div>
