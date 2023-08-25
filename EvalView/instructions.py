@@ -26,7 +26,7 @@ SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT_KALTURA = """<center>
 
     <iframe width="608" height="402" id="iframe-video-instructions-segment" src="{url}"
         class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade"
-        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura player"></iframe>
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" style="display:none" title="Kaltura player"></iframe>
 </center>
 """
 
@@ -36,7 +36,7 @@ SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT_KALTURA = """<center>
 
     <iframe width="608" height="402" id="iframe-video-instructions-document" src="{url}"
         class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade"
-        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura player"></iframe>
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" style="display:none" title="Kaltura player"></iframe>
 </center>
 """
 
