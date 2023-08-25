@@ -1,7 +1,7 @@
 #! /bin/python
 
 
-SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT = """<center>
+SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT_YOUTUBE = """<center>
     <button onclick="show_video_instructions_segment()" class="btn btn-default button-margin" id="btn-show-video-instructions-segment" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
 
     <iframe width="560" id="iframe-video-instructions-segment" height="315" src="{url}"
@@ -11,7 +11,7 @@ SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT = """<center>
 """
 
 
-SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT = """<center>
+SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT_YOUTUBE = """<center>
     <button type="button" onclick="show_video_instructions_document()" class="btn btn-default button-margin" id="btn-show-video-instructions-document" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
 
     <iframe width="560" id="iframe-video-instructions-document" height="315" src="{url}"
@@ -21,7 +21,27 @@ SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT = """<center>
 """
 
 
-sl_video_instructions_urls = {
+SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT_KALTURA = """<center>
+    <button onclick="show_video_instructions_segment()" class="btn btn-default button-margin" id="btn-show-video-instructions-segment" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
+
+    <iframe width="608" height="402" id="iframe-video-instructions-segment" src="{url}"
+        class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura player"></iframe>
+</center>
+"""
+
+
+SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT_KALTURA = """<center>
+    <button type="button" onclick="show_video_instructions_document()" class="btn btn-default button-margin" id="btn-show-video-instructions-document" texthide="{text_hide}" textshow="{text_show}">{text_show}</button>
+
+    <iframe width="608" height="402" id="iframe-video-instructions-document" src="{url}"
+        class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura player"></iframe>
+</center>
+"""
+
+
+sl_video_instructions_urls_youtube = {
     "text_to_sign": {
         "segment": {
             "sgg": "https://www.youtube.com/embed/b1-N6op9Ozk",
@@ -48,6 +68,43 @@ sl_video_instructions_urls = {
     }
 }
 
+
+sl_video_instructions_urls_kaltura = {
+    "text_to_sign": {
+        "segment": {
+            "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_ginojjwt/uiConfId/23448425/st/0",
+            "ise": "",
+            "fsl": "",
+            "bfi": "",
+            "gsg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_hjtvkp1i/uiConfId/23448425/st/0",
+        },
+        "document": {
+            "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_dea3l9cz/uiConfId/23448425/st/0",
+            "ise": "",
+            "fsl": "",
+            "bfi": "",
+            "gsg": "",
+        }
+    },
+    "sign_to_text": {
+        "segment": {
+            "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_1ccvo9ou/uiConfId/23448425/st/0",
+            "ise": "",
+            "fsl": "",
+            "bfi": "",
+            "gsg": "",
+        },
+        "document": {
+            "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_zao6hxoe/uiConfId/23448425/st/0",
+            "ise": "",
+            "fsl": "",
+            "bfi": "",
+            "gsg": "",
+        }
+    }
+}
+
+
 button_texts = {
     "eng": {
         "hide": "Hide sign language instructions",
@@ -70,15 +127,15 @@ button_texts = {
 
 def get_video_instructions(direction: str, level: str, sign_language: str, ui_language: str) -> str:
 
-    url = sl_video_instructions_urls[direction][level][sign_language]
+    url = sl_video_instructions_urls_kaltura[direction][level][sign_language]
 
     text_hide = button_texts[ui_language]["hide"]
     text_show = button_texts[ui_language]["show"]
 
     if level == "segment":
-        template = SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT
+        template = SL_VIDEO_INSTRUCTIONS_TEMPLATE_SEGMENT_KALTURA
     else:
-        template = SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT
+        template = SL_VIDEO_INSTRUCTIONS_TEMPLATE_DOCUMENT_KALTURA
 
     return template.format(url=url, text_hide=text_hide, text_show=text_show)
 
