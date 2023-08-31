@@ -125,6 +125,55 @@ button_texts = {
 }
 
 
+language_names_per_ui_language = {
+    "eng": {
+        "deu": "German",
+        "eng": "English",
+        "fra": "French",
+        "ita": "Italian",
+        "sgg": "Swiss German Sign Language (DSGS)",
+        "ise": "Italian Sign Language (LIS)",
+        "fsl": "French Sign Language (LSF)",
+        "bfi": "British Sign Language (BSL)",
+        "gsg": "German Sign Language (DGS)",
+    },
+    "deu": {
+        # modified for correct German case
+        "deu": "Deutsch",
+        "eng": "Englisch",
+        "fra": "Französisch",
+        "ita": "Italienisch",
+        "sgg": "Schweizerdeutscher Gebärdensprache (DSGS)",
+        "ise": "Italienischer Gebärdensprache (LIS)",
+        "fsl": "Französischer Gebärdensprache (LSF)",
+        "bfi": "Britischer Gebärdensprache (BSL)",
+        "gsg": "Deutscher Gebärdensprache (DGS)",
+    },
+    "fra": {
+        "deu": "allemand",
+        "eng": "anglais",
+        "fra": "français",
+        "ita": "italien",
+        "sgg": "",
+        "ise": "",
+        "fsl": "langue des signes française (LSF)",
+        "bfi": "",
+        "gsg": "",
+    },
+    "ita": {
+        "deu": "tedesco",
+        "eng": "inglese",
+        "fra": "francese",
+        "ita": "italiano",
+        "sgg": "",
+        "ise": "lingua dei segni italiana (LIS)",
+        "fsl": "",
+        "bfi": "",
+        "gsg": "",
+    },
+}
+
+
 def get_video_instructions(direction: str, level: str, sign_language: str, ui_language: str) -> str:
 
     url = sl_video_instructions_urls_kaltura[direction][level][sign_language]
@@ -143,28 +192,33 @@ def get_video_instructions(direction: str, level: str, sign_language: str, ui_la
 def get_sign_language_instructions(ui_language, text_to_sign, block_items, source_language, target_language,
                                    source_language_code, target_language_code, add_video_instructions: bool):
 
+    source_language_correct_ui_language = language_names_per_ui_language[ui_language][source_language_code]
+    target_language_correct_ui_language = language_names_per_ui_language[ui_language][target_language_code]
+
     if ui_language == "deu":
         if text_to_sign:
             priming_question_texts = [
-                'Unten sehen Sie ein Dokument mit {0} Sätzen auf Deutsch (linke Spalten) '
-                'und die entsprechenden möglichen Übersetzungen in Deutschschweizer '
-                'Gebärdensprache (DSGS) (rechte Spalten). Bewerten Sie jede mögliche '
+                'Unten sehen Sie ein Dokument mit {0} Sätzen auf {1} (linke Spalten) '
+                'und die entsprechenden möglichen Übersetzungen in {2} (rechte Spalten). Bewerten Sie jede mögliche '
                 'Übersetzung des Satzes im Kontext des Dokuments. '
                 'Sie können bereits bewertete Sätze jederzeit durch Anklicken eines '
                 'Quelltextes erneut aufrufen und die Bewertung aktualisieren.'.format(
                     len(block_items) - 1,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
 
         else:
             priming_question_texts = [
-                'Unten sehen Sie ein Dokument mit {0} Sätzen in Deutschschweizer '
-                'Gebärdensprache (DSGS) (linke Spalten) und die entsprechenden möglichen '
-                'Übersetzungen auf Deutsch (rechte Spalten). Bewerten Sie jede mögliche '
+                'Unten sehen Sie ein Dokument mit {0} Sätzen in {1} (linke Spalten) und die entsprechenden möglichen '
+                'Übersetzungen auf {2} (rechte Spalten). Bewerten Sie jede mögliche '
                 'Übersetzung des Satzes im Kontext des Dokuments. '
                 'Sie können bereits bewertete Sätze jederzeit durch Anklicken eines '
                 'Eingabevideos erneut aufrufen und die Bewertung aktualisieren.'.format(
                     len(block_items) - 1,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
 
@@ -177,24 +231,26 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
     elif ui_language == "fra":
         if text_to_sign:
             priming_question_texts = [
-                'Vous voyez ci-dessous un document avec {0} phrases en français (colonnes '
-                'de gauche) et leurs traductions candidates correspondantes en langue des '
-                'signes française (LSF) (colonnes de droite). Veuillez attribuer un score '
+                'Vous voyez ci-dessous un document avec {0} phrases en {1} (colonnes '
+                'de gauche) et leurs traductions candidates correspondantes {2} (colonnes de droite). Veuillez attribuer un score '
                 'à chaque traduction possible de la phrase dans le contexte du document. '
                 'Vous pouvez revisiter les phrases déjà évaluées et mettre à jour leurs '
                 'scores à tout moment en cliquant sur un texte source.'.format(
                     len(block_items) - 1,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
         else:
             priming_question_texts = [
-                'Vous voyez ci-dessous un document avec {0} phrases en langue des signes '
-                'française (LSF) (colonnes de gauche) et leurs traductions candidates '
-                'correspondantes en français (colonnes de droite). Veuillez attribuer un '
+                'Vous voyez ci-dessous un document avec {0} phrases en {1} (colonnes de gauche) et leurs traductions candidates '
+                'correspondantes en {2} (colonnes de droite). Veuillez attribuer un '
                 'score à chaque traduction possible de la phrase dans le contexte du document. '
                 'Vous pouvez revisiter les phrases déjà évaluées et mettre à jour leurs '
                 'scores à tout moment en cliquant sur une vidéo source.'.format(
                     len(block_items) - 1,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
 
@@ -206,24 +262,26 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
     elif ui_language == "ita":
         if text_to_sign:
             priming_question_texts = [
-                'Qui sotto trovate un documento con {0} frasi in italiano (colonne di sinistra) e le'
-                'corrispondenti possibili traduzioni nella lingua dei segni italiana '
-                '(LIS) (colonne di destra). Valutate '
+                'Qui sotto trovate un documento con {0} frasi in {1} (colonne di sinistra) e le'
+                'corrispondenti possibili traduzioni nella {2} (colonne di destra). Valutate '
                 'ogni possibile traduzione della frase nel contesto del documento. Potete rivedere '
                 'le frasi valutate in precedenza e aggiornarne le valutazioni in qualsiasi momento '
                 'cliccando sul testo sorgente.'.format(
                     len(block_items) - 1,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
         else:
             priming_question_texts = [
-                'Qui sotto trovate un documento con {0} frasi nella lingua dei segni italiana '
-                '(LIS) (colonne di sinistra) e le corrispondenti possibili traduzioni in '
-                'italiano (colonne di destra). Valutate ogni possibile traduzione della '
+                'Qui sotto trovate un documento con {0} frasi nella {1} (colonne di sinistra) e le corrispondenti possibili traduzioni in '
+                '{2} (colonne di destra). Valutate ogni possibile traduzione della '
                 'frase nel contesto del documento. Potete rivedere le frasi valutate in '
                 'precedenza e aggiornarne le valutazioni in qualsiasi momento cliccando '
                 'su un video sorgente.'.format(
                     len(block_items) - 1,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
 
@@ -243,8 +301,8 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
                 'sentence translation in the document context. You may revisit already scored '
                 'sentences and update their scores at any time by clicking on a source text.'.format(
                     len(block_items) - 1,
-                    source_language,
-                    target_language,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
         else:
@@ -255,8 +313,8 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
                 'Score each candidate sentence translation in the document context. You may revisit '
                 'already scored sentences and update their scores at any time by clicking on a source video.'.format(
                     len(block_items) - 1,
-                    source_language,
-                    target_language,
+                    source_language_correct_ui_language,
+                    target_language_correct_ui_language,
                 ),
             ]
 
