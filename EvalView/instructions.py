@@ -73,33 +73,33 @@ sl_video_instructions_urls_kaltura = {
     "text_to_sign": {
         "segment": {
             "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_ginojjwt/uiConfId/23448425/st/0",
-            "ise": "",
-            "fsl": "",
+            "ise": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_m8sapvzb/uiConfId/23448425/st/0",
+            "fsl": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_q1uhudq3/uiConfId/23448425/st/0",
             "bfi": "",
             "gsg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_hjtvkp1i/uiConfId/23448425/st/0",
         },
         "document": {
             "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_dea3l9cz/uiConfId/23448425/st/0",
-            "ise": "",
-            "fsl": "",
+            "ise": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_tzfugwt8/uiConfId/23448425/st/0",
+            "fsl": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_ns4vzs3q/uiConfId/23448425/st/0",
             "bfi": "",
-            "gsg": "",
+            "gsg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_l6md75up/uiConfId/23448425/st/0",
         }
     },
     "sign_to_text": {
         "segment": {
             "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_1ccvo9ou/uiConfId/23448425/st/0",
-            "ise": "",
-            "fsl": "",
+            "ise": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_7h5su6he/uiConfId/23448425/st/0",
+            "fsl": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_rc33fcid/uiConfId/23448425/st/0",
             "bfi": "",
-            "gsg": "",
+            "gsg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_95mb8yq6/uiConfId/23448425/st/0",
         },
         "document": {
             "sgg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_zao6hxoe/uiConfId/23448425/st/0",
-            "ise": "",
-            "fsl": "",
+            "ise": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_r1j19lk5/uiConfId/23448425/st/0",
+            "fsl": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_akamang4/uiConfId/23448425/st/0",
             "bfi": "",
-            "gsg": "",
+            "gsg": "https://uzh.mediaspace.cast.switch.ch/embed/secure/iframe/entryId/0_gmvd2djb/uiConfId/23448425/st/0",
         }
     }
 }
