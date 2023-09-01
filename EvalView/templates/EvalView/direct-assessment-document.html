@@ -617,7 +617,7 @@ function _show_error_box(item_box, msg) {
                     <span class="pull-left source-btn-toggle glyphicon glyphicon-menu-down"></span>
                     <span title="Source sentence #{{ item.itemID|add:"1" }}">
                         {% if source_item_type == 'video' %}
-                        <iframe class="toggleable" width="500" height="300" src="{{ item.sourceText }}"
+                        <iframe class="toggleable" width="500" height="300" style="max-width: 100%" src="{{ item.sourceText }}"
                                 frameborder="0" allowfullscreen></iframe>
                         <p class="toggleable-reverse"><i>&lt;Video is hidden. Click to expand.&gt;</i></p>
                         {% else %}
@@ -633,7 +633,7 @@ function _show_error_box(item_box, msg) {
                   {% endif %}
                     <span title="Candidate translation of source sentence #{{ item.itemID|add:"1" }}">
                         {% if target_item_type == 'video' %}
-                        <iframe class="toggleable" width="500" height="300" src="{{ item.targetText }}"
+                        <iframe class="toggleable" width="500" height="300" style="max-width: 100%" src="{{ item.targetText }}"
                                 frameborder="0" allowfullscreen></iframe>
                         <p class="toggleable-reverse"><i>&lt;Video is hidden. Click to expand.&gt;</i></p>
                         {% else %}
