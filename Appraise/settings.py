@@ -194,7 +194,10 @@ USE_TZ = True
 # version for development server:
 # FORCE_SCRIPT_NAME = '/service/appraise-dev/'
 
-FORCE_SCRIPT_NAME = '/service/appraise/'
+# version for local
+# FORCE_SCRIPT_NAME = ''
+
+FORCE_SCRIPT_NAME = '/service/appraise-iict/'
 
 STATIC_URL = FORCE_SCRIPT_NAME + '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
