@@ -143,7 +143,7 @@ language_names_per_ui_language = {
         "eng": "Englisch",
         "fra": "Französisch",
         "ita": "Italienisch",
-        "sgg": "Schweizerdeutscher Gebärdensprache (DSGS)",
+        "sgg": "Deutschschweizer Gebärdensprache (DSGS)",
         "ise": "Italienischer Gebärdensprache (LIS)",
         "fsl": "Französischer Gebärdensprache (LSF)",
         "bfi": "Britischer Gebärdensprache (BSL)",
@@ -197,10 +197,21 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
 
     if ui_language == "deu":
         if text_to_sign:
+            # priming_question_texts = [
+            #     'Unten sehen Sie ein Dokument mit {0} Sätzen auf {1} (linke Spalten) '
+            #     'und die entsprechenden möglichen Übersetzungen in {2} (rechte Spalten). Bewerten Sie jede mögliche '
+            #     'Übersetzung des Satzes im Kontext des Dokuments. '
+            #     'Sie können bereits bewertete Sätze jederzeit durch Anklicken eines '
+            #     'Quelltextes erneut aufrufen und die Bewertung aktualisieren.'.format(
+            #         len(block_items) - 1,
+            #         source_language_correct_ui_language,
+            #         target_language_correct_ui_language,
+            #     ),
+            # ]
             priming_question_texts = [
-                'Unten sehen Sie ein Dokument mit {0} Sätzen auf {1} (linke Spalten) '
+                'Unten sehen Sie {0} Sätzen auf {1} (linke Spalten) '
                 'und die entsprechenden möglichen Übersetzungen in {2} (rechte Spalten). Bewerten Sie jede mögliche '
-                'Übersetzung des Satzes im Kontext des Dokuments. '
+                'Übersetzung des Satzes. '
                 'Sie können bereits bewertete Sätze jederzeit durch Anklicken eines '
                 'Quelltextes erneut aufrufen und die Bewertung aktualisieren.'.format(
                     len(block_items) - 1,
@@ -222,9 +233,14 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
                 ),
             ]
 
+        # document_question_texts = [
+        #     'Bitte bewerten Sie die Übersetzungsqualität des gesamten Dokuments. '
+        #     '(Sie können das Dokument erst bewerten, nachdem Sie zuvor alle Sätze '
+        #     'einzeln bewertet haben.)',
+        # ]
         document_question_texts = [
-            'Bitte bewerten Sie die Übersetzungsqualität des gesamten Dokuments. '
-            '(Sie können das Dokument erst bewerten, nachdem Sie zuvor alle Sätze '
+            'Bitte bewerten Sie die Übersetzungsqualität der Seite. '
+            '(Sie können die Seite erst bewerten, nachdem Sie zuvor alle Sätze '
             'einzeln bewertet haben.)',
         ]
 
@@ -343,11 +359,11 @@ def get_sign_language_instructions(ui_language, text_to_sign, block_items, sourc
 
         # on document level
 
-        video_string_document = get_video_instructions(direction=direction,
-                                                       level="document",
-                                                       sign_language=sign_language,
-                                                       ui_language=ui_language)
+        # video_string_document = get_video_instructions(direction=direction,
+        #                                                level="document",
+        #                                                sign_language=sign_language,
+        #                                                ui_language=ui_language)
 
-        document_question_texts = [video_string_document] + document_question_texts
+        # document_question_texts = [video_string_document] + document_question_texts
 
     return priming_question_texts, document_question_texts

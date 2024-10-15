@@ -220,7 +220,7 @@ if MEDIA_ROOT and MEDIA_ROOT[-1] != '/':
 
 # Base context for all views.
 BASE_CONTEXT = {
-    'commit_tag': '#easier_final_eval',
+    'commit_tag': '#iict',
     'title': 'Appraise evaluation system',
     'static_url': STATIC_URL,
 }

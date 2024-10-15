@@ -689,11 +689,11 @@ function _show_error_box(item_box, msg) {
                     {% for text in document_question_texts %}
                     <p>{{text|safe}}</p>
                     {% endfor %}
-                    {% if sqm %}
+                    <!-- {% if sqm %}
                       {% with speech=speech signlt=signlt mono=monolingual ui_lang=ui_lang %}
                       {% include 'EvalView/_sqm_instructions.html' %}
                       {% endwith %}
-                    {% endif %}
+                    {% endif %} -->
                 </div>
             </div>
         </div>
