@@ -820,6 +820,9 @@ def direct_assessment_document(request, code=None, campaign_name=None):
             'score': result.score if result else -1,
         }
 
+        # HACK: fix escape in the data
+        item.sourceText = item.sourceText.replace('&quot;', '"')
+
         # This is a hot fix for a bug in the IWSLT2022 Isometric Task batches,
         # where the document ID wasn't correctly incremented.
         # TODO: delete after the campaign is finished or fix all documents in DB
